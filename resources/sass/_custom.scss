@@ -1,0 +1,102 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.navbar {
+    background-color: $cyan !important;
+    font-size: 50px;
+}
+
+.li-top-nav {
+    font-size: 18px;
+    margin-right: 25px;
+}
+.hover-top-nav-link:hover {
+    color: $gray-600 !important;
+}
+
+.top-nav {
+    background-color: $gray-800;
+}
+.img-width {
+    width: 40%;
+}
+.py-6 {
+    padding: 5rem 0rem;
+}
+.blog-section {
+    background-color: $gray-300;
+}
+
+.shop-section {
+    background-color: $gray-200;
+
+    li {
+        font-size: 20px;
+    }
+}
+.product-section-like {
+    background-color: $gray-200;
+}
+.cart-total {
+    background-color: $gray-300;
+}
+.btn-teal {
+    color: #fff;
+    background-color: $teal;
+    border-color: $teal;
+}
+
+.order-complete-btn {
+    color: #fff;
+    background-color: $teal;
+}
+.btn-remove {
+    border: none;
+    background-color: transparent;
+}
+.thank {
+    width: 300px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+footer {
+    background: $gray-800;
+    color: white;
+    padding: 40px 0;
+    margin-top: auto;
+
+    .footer-content {
+        ul {
+            display: flex;
+            justify-content: space-between;
+            width: 30%;
+
+            a {
+                color: white;
+            }
+        }
+    }
+}
+#card-element {
+    display: block;
+    width: 100%;
+    height: calc(1.6em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+#payment-result {
+    color: red;
+}
