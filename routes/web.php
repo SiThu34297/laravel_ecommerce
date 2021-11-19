@@ -34,11 +34,22 @@ Route::post('/cart/switchToSaveForLater/{product}', [CartController::class,'swit
 Route::delete('/saveForLater/{product}', [SaveForLaterController::class,'destroy'])->name('saveforlater.destroy');
 Route::post('/saveForLater/switchToCart/{product}', [SaveForLaterController::class,'switchToCart'])->name('saveforlater.switchToCart');
 
-Route::get('/checkout', [CheckoutController::class,'index'])->name('checkout');
+Route::get('/checkout', [CheckoutController::class,'index'])->name('checkout')->middleware('auth');
 Route::post('/checkout', [CheckoutController::class,'store'])->name('checkout.store');
+
+Route::get('/guest-checkout', [CheckoutController::class,'index'])->name('guestCheckout');
 
 Route::post('/coupon', [CouponController::class,'store'])->name('coupon.store');
 Route::delete('/coupon', [CouponController::class,'destroy'])->name('coupon.destroy');
 
 
 Route::get('/thankyou', [ConfirmationController::class,'index'])->name('thankyou');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

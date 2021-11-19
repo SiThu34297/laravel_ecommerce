@@ -18,6 +18,10 @@ class CheckoutController extends Controller
     */
     public function index()
     {
+        if (auth()->user() && request()->is('guest-checkout')) {
+            return redirect()->route('checkout');
+        }
+
         return view(
             'checkout',
             ['discount' => $this->getNumbers()->get('discount') ,

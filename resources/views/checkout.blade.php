@@ -31,9 +31,9 @@
         {{-- success message --}}
         @if ($errors->any())
         <div class="alert alert-danger">
-            <ul>
+            <ul class=" list-unstyled">
                 @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li>{!! $error !!}</li>
                 @endforeach
             </ul>
         </div>
@@ -45,8 +45,13 @@
                     @csrf
                     <div class="mb-3">
                         <label>Email</label>
+                        @if (auth()->user())
+                        <input type="email" id="email" name="email" class="form-control"
+                            value="{{auth()->user()->email}}" readonly>
+                        @else
                         <input type="email" id="email" name="email" class="form-control" value="{{old('email')}}"
                             required>
+                        @endif
                     </div>
                     <div class="mb-3">
                         <label>Name</label>
@@ -114,8 +119,7 @@
                 @foreach (Cart::instance('shopping')->content() as $item)
                 <div class="border-bottom py-3">
                     <div class="d-flex flex-md-row flex-column justify-content-between align-items-md-center">
-                        <img src="{{asset('images/products/'.$item->model->slug.'.jpg')}}" alt="product-img"
-                            width="150">
+                        <img src="{{asset('storage/'.$item->model->image)}}" alt="product-img" width="150">
                         <div class="text-box mt-md-0 mt-3">
                             <h5>{{$item->model->name}}</h5>
                             <span>{{$item->model->details}}</span>

@@ -4428,7 +4428,7 @@ input[type=button].btn-block {
   float: left;
   padding-right: 0.5rem;
   color: #6c757d;
-  content: ">";
+  content: "/";
 }
 .breadcrumb-item + .breadcrumb-item:hover::before {
   text-decoration: underline;
@@ -9770,11 +9770,6 @@ body {
   flex-direction: column;
 }
 
-.navbar {
-  background-color: #6cb2eb !important;
-  font-size: 50px;
-}
-
 .li-top-nav {
   font-size: 18px;
   margin-right: 25px;
@@ -9873,4 +9868,22 @@ footer .footer-content ul a {
 
 #payment-result {
   color: red;
+}
+
+.product-gallery img {
+  width: 100px;
+  height: 75px;
+  border: 1px solid #000;
+  cursor: pointer;
+  opacity: 7;
+  transition: opacity 2s ease-in-out;
+}
+
+#current-image {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+#current-image.active {
+  opacity: 1;
 }

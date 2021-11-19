@@ -24,8 +24,8 @@ class ProductSeeder extends Seeder
                 'description'=> 'Lorem'. $i .' ipsum dolor sit, amet consectetur adipisicing elit. Praesentium possimus aperiam molestias reiciendis deleniti ipsum, perferendis inventore cumque explicabo beatae.'
             ])->categories()->attach(1);
         }
-        $products = Product::find(1);
-        $products->categories()->attach(2);
+        // $products = Product::find(1);
+        // $products->categories()->attach(2);
 
         //desktops
         for ($i=1; $i <= 9; $i++) {

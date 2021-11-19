@@ -43,7 +43,7 @@
             @foreach ($products as $product)
             <div class="col mt-5 text-center">
                 <a href="{{route('shop.show',$product->slug)}}">
-                    <img src="{{asset('images/products/'.$product->slug.'.jpg')}}" alt="product-img" width="100%">
+                    <img src="{{asset('storage/'.$product->image)}}" alt="product-img" width="100%">
                 </a>
                 <div class="mt-3 text-center">
                     <a href="{{route('shop.show',$product->slug)}}" class="text-decoration-none text-dark">

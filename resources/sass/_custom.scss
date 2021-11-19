@@ -3,10 +3,6 @@ body {
     display: flex;
     flex-direction: column;
 }
-.navbar {
-    background-color: $cyan !important;
-    font-size: 50px;
-}
 
 .li-top-nav {
     font-size: 18px;
@@ -99,4 +95,19 @@ footer {
 }
 #payment-result {
     color: red;
+}
+.product-gallery img {
+    width: 100px;
+    height: 75px;
+    border: 1px solid #000;
+    cursor: pointer;
+    opacity: 7;
+    transition: opacity 2s ease-in-out;
+}
+#current-image {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+#current-image.active {
+    opacity: 1;
 }

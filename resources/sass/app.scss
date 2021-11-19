@@ -5,10 +5,7 @@
 @import "variables";
 
 $enable-rounded: false;
-$breadcrumb-divider: quote(">");
-
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
-//custom
-@import "custom";
+@import "_custom.scss";

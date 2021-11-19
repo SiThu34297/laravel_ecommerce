@@ -14,23 +14,44 @@
 
 <body>
     <header class="top-nav">
-        <div class="container d-flex flex-md-row flex-column align-items-md-center justify-content-md-between py-md-4">
-            <div class="top-nav-logo text-center">
-                <a href="" class="text-decoration-none">
-                    <h3 class="text-white">Laravel Ecommerce</h3>
+        <div class="container d-flex flex-lg-row flex-column justify-content-md-between py-md-4">
+            <div class="top-nav-logo d-flex flex-lg-row flex-column">
+                <a href="{{route('index')}}" class="text-decoration-none">
+                    <h3 class="text-white mr-5">Laravel Ecommerce</h3>
                 </a>
+                {{menu('main', 'layouts.menu.header_menu')}}
             </div>
+            {{-- end right menu --}}
             <div class="top-nav-menu mt-md-0 mt-3">
-                <ul class="list-unstyled d-flex justify-content-center ml-md-0 ml-5">
+                <ul class="list-unstyled d-flex justify-content-lg-center mt-lg-0 mt-2">
+                    @guest
                     <li class="li-top-nav">
-                        <a class="text-white text-decoration-none hover-top-nav-link" href="{{route('shop')}}">Shop</a>
+                        <a class="text-white text-decoration-none hover-top-nav-link" href="{{route('register')}}"> Sign
+                            Up</a>
                     </li>
                     <li class="li-top-nav">
-                        <a class="text-white text-decoration-none hover-top-nav-link" href="">About</a>
+                        <a class="text-white text-decoration-none hover-top-nav-link"
+                            href="{{route('login')}}">Login</a>
                     </li>
-                    <li class="li-top-nav">
-                        <a class="text-white text-decoration-none hover-top-nav-link" href="">Blog</a>
+                    @else
+                    <li class="nav-item dropdown li-top-nav">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-decoration-none text-white p-0"
+                            href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
                     </li>
+                    @endguest
                     <li class="li-top-nav">
                         <a class="text-white text-decoration-none hover-top-nav-link" href="{{route('cart')}}">
                             Cart
@@ -43,6 +64,7 @@
                     </li>
                 </ul>
             </div>
+            {{-- end left menu --}}
         </div>
         {{-- end top-nav --}}
     </header>
@@ -52,18 +74,13 @@
 
     <footer>
         <div class="footer-content container d-flex flex-sm-row flex-column justify-content-sm-between">
-            <div class="made-with">Made with <i class="fa fa-heart"></i> by Sithu</div>
-            <ul class=" list-unstyled">
-                <li>Follow Me:</li>
-                <li><a href="#"><i class="fa fa-globe"></i></a></li>
-                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                <li><a href="#"><i class="fab fa-github"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-            </ul>
+            <div class="made-with w-100">Made with <i class="fa fa-heart"></i> by Sithu</div>
+            {{menu('footer','layouts.menu.footer_menu')}}
         </div> <!-- end footer-content -->
     </footer>
 
     @yield('extra-js')
+    <script src="{{asset('js/app.js')}}"></script>
 </body>
 
 </html>

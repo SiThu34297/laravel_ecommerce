@@ -39,8 +39,7 @@
             <div class="col-md-10 col-8 offset-md-0 offset-1 border-bottom py-3">
                 <div class="d-flex flex-md-row flex-column justify-content-between align-items-md-center">
                     <a href="{{route('shop.show',$item->model->slug)}}" class="w-25">
-                        <img src="{{asset('images/products/'.$item->model->slug.'.jpg')}}" alt="product-img"
-                            width="100%">
+                        <img src="{{asset('storage/'.$item->model->image)}}" alt="product-img" width="100%">
                     </a>
                     <div class="text-box mt-md-0 mt-3">
                         <a href="{{route('shop.show',$item->model->slug)}}" class="text-decoration-none text-dark">
@@ -122,8 +121,7 @@
             <div class="col-md-10 col-8 offset-md-0 offset-1 border-bottom py-3">
                 <div class="d-flex flex-md-row flex-column justify-content-between align-items-md-center">
                     <a href="{{route('shop.show',$item->model->slug)}}" class="w-25">
-                        <img src="{{asset('images/products/'.$item->model->slug.'.jpg')}}" alt="product-img"
-                            width="100%">
+                        <img src="{{asset('storage/'.$item->model->image)}}" alt="product-img" width="100%">
                     </a>
                     <div class="text-box mt-md-0 mt-3">
                         <a href="{{route('shop.show',$item->model->slug)}}" class="text-decoration-none text-dark">
