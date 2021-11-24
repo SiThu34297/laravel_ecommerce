@@ -18,17 +18,6 @@ class CartController extends Controller
     {
         return view('cart');
     }
-
-    /**
-    * Show the form for creating a new resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
-    public function create()
-    {
-        //
-    }
-
     /**
     * Store a newly created resource in storage.
     *
@@ -49,29 +38,6 @@ class CartController extends Controller
 
         return redirect()->route('cart')->with('success_message', 'Item was added to your cart');
     }
-
-    /**
-    * Display the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function edit($id)
-    {
-        //
-    }
-
     /**
     * Update the specified resource in storage.
     *
@@ -87,6 +53,10 @@ class CartController extends Controller
 
         if ($validator->fails()) {
             session()->flash('error', 'Quantity must be between 1 and 5!');
+            return response()->json(['success' => false], 400);
+        }
+        if ($request->product_Quantity < $request->quantity) {
+            session()->flash('error', 'We currently do not have enough items in stock!');
             return response()->json(['success' => false], 400);
         }
 

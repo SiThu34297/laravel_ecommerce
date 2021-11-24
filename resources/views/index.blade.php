@@ -70,33 +70,15 @@
                 quaerat porro autem illo.</p>
         </div>
         <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 g-4 py-5">
+            @foreach ($posts as $post)
             <div class="col">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cssgrid_blog1.png" alt="blog-img"
-                    width="100%">
+                <img src="{{'storage/'.$post->image}}" alt="blog-img" width="100%">
                 <div class="mt-3">
-                    <h1>Blog Post Title</h1>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam a temporibus rem, nulla
-                        adipisci at minus inventore recusandae laudantium tempore?</p>
+                    <h1>{{$post->title}}</h1>
+                    <p>{{Str::limit($post->excerpt,50)}}</p>
                 </div>
             </div>
-            <div class="col">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cssgrid_blog2.png" alt="blog-img"
-                    width="100%">
-                <div class="mt-3">
-                    <h1>Blog Post Title</h1>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam a temporibus rem, nulla
-                        adipisci at minus inventore recusandae laudantium tempore?</p>
-                </div>
-            </div>
-            <div class="col">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cssgrid_blog3.png" alt="blog-img"
-                    width="100%">
-                <div class="mt-3">
-                    <h1>Blog Post Title</h1>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam a temporibus rem, nulla
-                        adipisci at minus inventore recusandae laudantium tempore?</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

@@ -6,6 +6,7 @@ use App\Http\Requests\CheckoutRequest;
 use App\Mail\OrderShipped;
 use App\Models\Order;
 use App\Models\OrderProduct;
+use App\Models\Product;
 use Exception;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -44,6 +45,10 @@ class CheckoutController extends Controller
     */
     public function store(CheckoutRequest $request)
     {
+        //check race condition when there are less items available to purchase
+        if ($this->productsAreNoLongerAvailable()) {
+            return back()->withErrors('Sorry! One of the items in your cart is no longer available');
+        }
         $contents = Cart::instance('shopping')->content()->map(function ($item) {
             return $item->model->slug. ',' . $item->qty;
         })->values()->toJson();
@@ -68,6 +73,8 @@ class CheckoutController extends Controller
             //send mail
             Mail::send(new OrderShipped($order));
 
+            //decrease quantity for each item in the cart
+            $this->decreaseQuantities();
             //SUCCESSFUL
             Cart::instance('shopping')->destroy();
             session()->forget('coupon');
@@ -121,5 +128,24 @@ class CheckoutController extends Controller
         }
 
         return $order;
+    }
+
+    protected function decreaseQuantities()
+    {
+        foreach (Cart::instance('shopping')->content() as $item) {
+            $product = Product::find($item->model->id);
+            $product->update(['quantity' => $product->quantity - $item->qty]);
+        }
+    }
+
+    protected function productsAreNoLongerAvailable()
+    {
+        foreach (Cart::instance('shopping')->content() as $item) {
+            $product = Product::find($item->model->id);
+            if ($product->quantity < $item->qty) {
+                return true;
+            }
+        }
+        return false;
     }
 }

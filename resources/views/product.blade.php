@@ -41,8 +41,11 @@
             <div class="col-lg-4 col-sm-10 mt-4 mt-lg-0">
                 <h1 class="mb-3">{{$product->name}}</h1>
                 <h4 class="mb-3">{{$product->details}}</h4>
+                <span
+                    class="badge {{$stockLevel === 'In Stock' ? 'bg-success' : ''}} {{$stockLevel === 'Low Stock' ? 'bg-warning' : ''}} {{$stockLevel === 'Not Available' ? 'bg-danger' : ''}} text-white mb-3">{{$stockLevel}}</span>
                 <h1 class="mb-3">{{$product->presentPrice()}}</h1>
                 <p class="mb-3">{!! $product->description !!}</p>
+                @if ($product->quantity > 0)
                 <form action="{{route('cart.store')}}" method="POST">
                     @csrf
                     <input type="hidden" name="id" value="{{$product->id}}">
@@ -50,6 +53,7 @@
                     <input type="hidden" name="price" value="{{$product->price}}">
                     <button type="submit" class="btn btn-outline-dark">Add To Cart</button>
                 </form>
+                @endif
             </div>
         </div>
     </div>

@@ -1,14 +1,33 @@
 @extends('layouts.main')
+
 @section('title','Shop')
+
 @section('content')
 <div class="shop-section">
     <div class="container">
-        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('index')}}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Shop</li>
-            </ol>
-        </nav>
+        <div class="row">
+            <div class="col-md-8">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('index')}}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-md-4">
+                <div class="search-bar mt-2">
+                    <form action="{{route('search')}}" method="GET">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-search"></i>
+                            </span>
+                            <input type="text" name="query" class="form-control" placeholder="Search for product"
+                                value="{{request()->input('query')}}">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {{-- end top nav --}}

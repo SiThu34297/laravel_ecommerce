@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use TCG\Voyager\Models\Post;
 
 class IndexController extends Controller
 {
@@ -15,8 +16,8 @@ class IndexController extends Controller
     public function index()
     {
         $products = Product::inRandomOrder()->take(8)->get();
-
-        return view('index', compact('products'));
+        $posts = Post::inRandomOrder()->take(3)->get();
+        return view('index', compact('products', 'posts'));
     }
 
     /**

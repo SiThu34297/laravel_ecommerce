@@ -1,0 +1,60 @@
+.right-auth-container {
+    max-width: 400px;
+    margin: auto;
+
+    h1 {
+        font-weight: 500;
+        margin-bottom: 15px;
+    }
+    span {
+        display: block;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    p {
+        margin-top: 10px;
+        font-size: 15px;
+    }
+    a {
+        display: inline-block;
+        text-decoration: none;
+        color: black;
+        margin-bottom: 30px;
+        border: 1px solid black;
+        padding: 10px 25px;
+        background: transparent;
+    }
+    a:hover {
+        background-color: black;
+        color: white;
+        transition: 0.2s ease-in-out;
+    }
+}
+
+.left-auth-container {
+    max-width: 400px;
+    margin: auto;
+    h1 {
+        font-weight: 500;
+        margin-bottom: 30px;
+    }
+    h1:hover {
+        color: $cyan;
+    }
+    button {
+        color: white;
+        padding: 8px 35px;
+        background: black;
+        border: none;
+        border-radius: 5px;
+    }
+    button:hover {
+        background-color: $gray-900;
+    }
+    a {
+        display: block;
+        text-decoration: none;
+        color: black;
+        margin-top: 30px;
+    }
+}

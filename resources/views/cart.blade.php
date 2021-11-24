@@ -65,7 +65,8 @@
                         {{-- end save for later post method --}}
                     </div>
                     <div class="total-input mt-md-0 mt-3">
-                        <select data-id="{{$item->rowId}}" class="form-control quantity">
+                        <select data-id="{{$item->rowId}}" data-quanity={{$item->model->quantity}}
+                            class="form-control quantity">
                             @for ($i = 1 ; $i <= 5 ; $i++) <option {{$item->qty == $i ? "selected" : ''}}>{{$i}}
                                 </option>
                                 @endfor
@@ -172,15 +173,17 @@
             Array.from(className).forEach(function(element){
                 element.addEventListener('change',function(){
                     id = element.getAttribute('data-id');
+                    productQuantity = element.getAttribute('data-quanity');
                     axios.patch(`/cart/${id}`, {
-                        quantity: this.value
+                        quantity: this.value,
+                        product_Quantity: productQuantity
                     })
                     .then(function (response) {
                         // console.log(response);
                         window.location.href = "{{route('cart')}}"
                     })
                     .catch(function (error) {
-                        console.log(error);
+                        // console.log(error);
                         window.location.href = "{{route('cart')}}"
                     });
                 })

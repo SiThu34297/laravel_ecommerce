@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
 @charset "UTF-8";
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
@@ -9886,4 +9886,64 @@ footer .footer-content ul a {
 
 #current-image.active {
   opacity: 1;
+}
+
+.right-auth-container {
+  max-width: 400px;
+  margin: auto;
+}
+.right-auth-container h1 {
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+.right-auth-container span {
+  display: block;
+  font-weight: bold;
+  font-size: 15px;
+}
+.right-auth-container p {
+  margin-top: 10px;
+  font-size: 15px;
+}
+.right-auth-container a {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  margin-bottom: 30px;
+  border: 1px solid black;
+  padding: 10px 25px;
+  background: transparent;
+}
+.right-auth-container a:hover {
+  background-color: black;
+  color: white;
+  transition: 0.2s ease-in-out;
+}
+
+.left-auth-container {
+  max-width: 400px;
+  margin: auto;
+}
+.left-auth-container h1 {
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+.left-auth-container h1:hover {
+  color: #6cb2eb;
+}
+.left-auth-container button {
+  color: white;
+  padding: 8px 35px;
+  background: black;
+  border: none;
+  border-radius: 5px;
+}
+.left-auth-container button:hover {
+  background-color: #212529;
+}
+.left-auth-container a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  margin-top: 30px;
 }
